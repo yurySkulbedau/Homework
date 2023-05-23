@@ -10,9 +10,6 @@ Console.Write("Input second number: ");
 int b = Convert.ToInt32(Console.ReadLine());
 int maximum = a;
 
-if (a < b)
-{
-    maximum = b;
-}
+if (a < b) maximum = b;
 
 Console.WriteLine("Maximum number is " + maximum);

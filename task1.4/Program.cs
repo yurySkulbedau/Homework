@@ -12,14 +12,7 @@ Console.Write("Input the third number: ");
 int c = Convert.ToInt32(Console.ReadLine());
 int maximum = a;
 
-if (a < b)
-{
-    maximum = b;
-}
-
-if (maximum < c)
-{
-    maximum = c;
-}
+if (a < b) maximum = b;
+if (maximum < c) maximum = c;
 
 Console.WriteLine("Maximum number is " + maximum);
