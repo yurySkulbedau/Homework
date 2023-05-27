@@ -4,8 +4,18 @@
 1 -> нет
 */
 
-Console.Write("Input index day of the week: ");
-int day = Convert.ToInt32(Console.ReadLine());
+int Prompt(string message)
+{
+    System.Console.Write(message);
+    bool isNumber = int.TryParse(Console.ReadLine(), out int result);
+    if (isNumber == false)
+    {
+        Console.WriteLine("It is not an integer.");
+    }
+    return result;
+}
+
+int day = Prompt("Input index day of the week: ");
 int[] array = {1, 2, 3, 4, 5, 6, 7};
 
 if (array.Contains(day))

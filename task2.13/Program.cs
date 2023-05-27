@@ -4,8 +4,18 @@
 32679 -> 6
 */
 
-Console.Write("Input number: ");
-int number = Convert.ToInt32(Console.ReadLine());
+int Prompt(string message)
+{
+    System.Console.Write(message);
+    bool isNumber = int.TryParse(Console.ReadLine(), out int result);
+    if (isNumber == false)
+    {
+        Console.WriteLine("It is not an integer.");
+    }
+    return result;
+}
+
+int number = Prompt("Input number: ");
 
 if (number < 100)
 {
