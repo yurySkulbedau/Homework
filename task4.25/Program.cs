@@ -14,21 +14,31 @@ int Prompt(string message)
     return result;
 }
 
-int NaturalPower(int a, int b)
+int NaturalExponentiation(int powerBase, int exponent)
 {
     int result = 1;
-    for (int i = 0; i < b; i++)
+    for (int i = 0; i < exponent; i++)
     {
-        result *= a;
+        result *= powerBase;
     }
     return result;
+}
+
+bool ValidateExponent(int exponent)
+{
+    if (exponent < 0)
+    {
+        Console.WriteLine("exponent must not be negative");
+        return false;
+    }
+    return true;
 }
 
 
 int A = Prompt("Input A: ");
 int B = Prompt("Input B: ");
-if (A != -1 && B != -1)
+if (A != -1 && B != -1 && ValidateExponent(B))
 {
-    int power = NaturalPower(A, B);
+    int power = NaturalExponentiation(A, B);
     Console.WriteLine($"{A} to the power of {B} is equal to {power}");
 }
