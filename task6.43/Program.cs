@@ -8,7 +8,7 @@ double Prompt(string message)
 {
     Console.Write(message);
     double number;
-    while(!double.TryParse(Console.ReadLine(), out number))
+    while (!double.TryParse(Console.ReadLine(), out number))
     {
         Console.Write("Ivvalid value. Please enter a valid number: ");
     }
@@ -36,7 +36,7 @@ double k2 = Prompt("Enter k2: ");
 
 if (IsValidate(k1, k2))
 {
-    FindIntersection(b1, b2, k1, k2);    
+    FindIntersection(b1, b2, k1, k2);
 }
 else
 {
