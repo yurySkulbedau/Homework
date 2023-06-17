@@ -7,7 +7,7 @@
 Сумма элементов главной диагонали: 1+9+2 = 12
 */
 
-int PromptPositiveInt(string message)
+int PromptPositiveInt(string message = "")
 {
     int number = 0;
     bool isInputValid = false;
@@ -57,7 +57,7 @@ void PrintMatrix(double[,] matrix)
 
 double GetDiagonalSum(double[,] matrix)
 {
-    int diagonalLength = Math.min(matrix.GetLength(0), matrix.GetLength(1));
+    int diagonalLength = Math.Min(matrix.GetLength(0), matrix.GetLength(1));
     double sum = 0;
     for (int i = 0; i < diagonalLength; i++)
     {
