@@ -6,12 +6,9 @@
 10 09 08 07
 */
 
-int size = 7; // задавай любой размер
+int size = 6; // задавай любой размер
 int[,] matrix = new int[size, size];
 int number = 1;
-int count = size; // на какое кол-во клеток закрашивать
-int coordinateI = 0;
-int coordinateJ = 0;
 
 void PrintMatrix(int[,] matrix, string message = "The matrix:")
 {
@@ -28,72 +25,51 @@ void PrintMatrix(int[,] matrix, string message = "The matrix:")
     }
 }
 
-bool AreNumbersIn(int number, int[,] arr2D)
+
+void FillMatrix(int[,] matrix)
 {
-    foreach (int element in arr2D)
+    int minRow = 0;
+    int maxRow = matrix.GetLength(0) - 1;
+    int minCol = 0;
+    int maxCol = matrix.GetLength(1) - 1;
+
+    while (minCol <= maxCol)
     {
-        if (element == number)
+        // Fill right
+        for (int j = minCol; j <= maxCol; j++)
         {
-            return true; // element found
+            matrix[minRow, j] = number;
+            number++;
         }
+        if (minCol == maxCol) break;
+        minRow++;
+
+        // Fill down
+        for (int i = minRow; i <= maxRow; i++)
+        {
+            matrix[i, maxCol] = number;
+            number++;
+        }
+        maxCol--;
+
+        // Fill left
+        for (int j = maxCol; j >= minCol; j--)
+        {
+            matrix[maxRow, j] = number;
+            number++;
+        }
+        if (minCol == maxCol) break;
+        maxRow--;
+
+        // Fill up
+        for (int i = maxRow; i >= minRow; i--)
+        {
+            matrix[i, minCol] = number;
+            number++;
+        }
+        minCol++;
     }
-    return false; // element NOT found
 }
 
-
-void FillRight(int i, int initJ)
-{
-    for (int j = initJ; j < initJ + count; j++)
-    {
-        matrix[i, j] = number;
-        number++;
-        coordinateJ = j;
-    }
-    count--;
-    coordinateI++;
-}
-
-void FillDown(int initI, int j)
-{
-    for (int i = initI; i < initI + count; i++)
-    {
-        matrix[i, j] = number;
-        number++;
-        coordinateI = i;
-    }
-    coordinateJ--;
-}
-
-void FillLeft(int i, int initJ)
-{
-    for (int j = initJ; j > initJ - count; j--)
-    {
-        matrix[i, j] = number;
-        number++;
-        coordinateJ = j;
-    }
-    count--;
-    coordinateI--;
-}
-
-void FillUp(int initI, int j)
-{
-    for (int i = initI; i > initI - count; i--)
-    {
-        matrix[i, j] = number;
-        number++;
-        coordinateI = i;
-    }
-    coordinateJ++;
-}
-
-
-while (AreNumbersIn(0, matrix))
-{
-    FillRight(coordinateI, coordinateJ);
-    FillDown(coordinateI, coordinateJ);
-    FillLeft(coordinateI, coordinateJ);
-    FillUp(coordinateI, coordinateJ);
-}
-
+FillMatrix(matrix);
 PrintMatrix(matrix);
